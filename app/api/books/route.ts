@@ -9,6 +9,7 @@ export async function POST(req: Request) {
       title: body.title,
       author: body.author,
       quantity: body.quantity,
+      img: body.img ?? "",
     },
   })
 

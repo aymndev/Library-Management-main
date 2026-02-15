@@ -6,6 +6,7 @@ export default function BooksPage() {
   const [title, setTitle] = useState("")
   const [author, setAuthor] = useState("")
   const [quantity, setQuantity] = useState(0)
+  const [img, setImg] = useState("")
 
   const fetchBooks = async () => {
     const res = await fetch("/api/books")
@@ -17,7 +18,7 @@ export default function BooksPage() {
     await fetch("/api/books", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, author, quantity }),
+      body: JSON.stringify({ img,title, author, quantity }),
     })
     fetchBooks()
   }
@@ -27,25 +28,38 @@ export default function BooksPage() {
   }, [])
 
   return (
-    <div>
-      <h1>Books</h1>
+    <div className="felx flex-col justify-center items-center">
+      <div className=" ">
+        <ul>
+          {books.map(book => (
+            <li key={book.id}>
+              <img src={book.img} alt={book.title} width={100} />
+              {book.title}
+              {book.author}
+              {book.quantity}
+            </li>
+          ))}
+        </ul>
 
-      <input placeholder="Title" onChange={e => setTitle(e.target.value)} />
-      <input placeholder="Author" onChange={e => setAuthor(e.target.value)} />
-      <input
-        type="number"
-        placeholder="Quantity"
-        onChange={e => setQuantity(Number(e.target.value))}
-      />
-      <button onClick={addBook}>Add Book</button>
+      </div>
 
-      <ul>
-        {books.map(book => (
-          <li key={book.id}>
-            {book.title} - {book.author} - {book.quantity}
-          </li>
-        ))}
-      </ul>
+
+      <div>
+        <h1>Add Book</h1>
+        <input placeholder="Image URL" onChange={e => setImg(e.target.value)} />
+        <input placeholder="Title" onChange={e => setTitle(e.target.value)} />
+        <input placeholder="Author" onChange={e => setAuthor(e.target.value)} />
+        <input
+          type="number"
+          placeholder="Quantity"
+          onChange={e => setQuantity(Number(e.target.value))}
+        />
+        <button onClick={addBook}>Add Book</button>
+
+      </div>
+
+
+
     </div>
   )
 }

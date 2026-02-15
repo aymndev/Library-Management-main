@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  engineType = "client"
 }
 
 datasource db {
@@ -21,4 +22,5 @@ model Book {
   title    String
   author   String
   quantity Int
+  img String @default("")
 }
