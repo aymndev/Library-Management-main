@@ -53,7 +53,15 @@ async function main (){
             img:"/book3.webp",
         }
     })
-    console.log({user1,user2,book1,book2,book3})
+    const book4=await prisma.book.create({
+        data:{
+            title:"The Subtle Art Of Not Giving a  F*cked",
+            author:"Mark Manson",
+            quantity:5,
+            img:"/book4.png",
+        }
+    })
+    console.log({user1,user2,book1,book2,book3 ,book4})
 }
 main()
 .catch((e)=>console.error(e))
