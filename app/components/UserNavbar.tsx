@@ -12,7 +12,7 @@ export default function UserNavbar() {
     };
 
     return (
-        <div className="flex justify-between w-full px-20 py-5 bg-gray-100 shadow-[0_0_5px_black]">
+        <div className="flex justify-between w-full px-20 py-5 bg-gray-100 shadow-[0_0_5px_black]  rounded-b-xl">
             <div className="flex items-center">
                 <p className="text-2xl font-bold flex gap-2">
                     <IoBookSharp className="h-9" /> Book House

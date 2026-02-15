@@ -31,16 +31,16 @@ async function main (){
     })
     const book1=await prisma.book.create({
         data:{
-            title:"book1",
-            author:"author1",
+            title:"Deep Thinking",
+            author:"Garry",
             quantity:10,
             img:'/book1.jpg',
         }
     })
     const book2=await prisma.book.create({
         data:{
-            title:"book2",
-            author:"author2",
+            title:"The Alchemist",
+            author:"john",
             quantity:20,
             img:"/book2.jpg",
         }

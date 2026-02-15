@@ -6,7 +6,6 @@ export default function BooksPage() {
   const [title, setTitle] = useState("")
   const [author, setAuthor] = useState("")
   const [quantity, setQuantity] = useState(0)
-  const [img, setImg] = useState("")
 
   const fetchBooks = async () => {
     const res = await fetch("/api/books")
@@ -18,7 +17,7 @@ export default function BooksPage() {
     await fetch("/api/books", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ img,title, author, quantity }),
+      body: JSON.stringify({ img, title, author, quantity }),
     })
     fetchBooks()
   }
@@ -28,15 +27,21 @@ export default function BooksPage() {
   }, [])
 
   return (
-    <div className="felx flex-col justify-center items-center">
-      <div className=" ">
-        <ul>
+    <div className=" flex flex-col bg-gray-200 h-screen p-5 m-5 rounded-xl m-2">
+      <div className="flex flex-row bg-gray-300 p-5 rounded-xl  ">
+        <ul className="flex gap-5   ">
           {books.map(book => (
             <li key={book.id}>
-              <img src={book.img} alt={book.title} width={100} />
-              {book.title}
-              {book.author}
-              {book.quantity}
+              <div className="flex flex-col text-center bg-white rounded-xl shadow-[5px_5px_5px_black] hover:scale-105 transition-transform duration-300">
+                <div className=" "><img className=" rounded-t-xl " src={book.img} alt={book.title} width={150} /></div>
+                <div className=" text-white font-bold bg-green-950 pt-5 w-[150px] rounded-b-xl pb-5 ">
+                  <p>{book.title} </p>
+                  <p>{book.author} </p>
+                  <p className="">{book.quantity}</p>
+                </div>
+
+              </div>
+
             </li>
           ))}
         </ul>
@@ -46,7 +51,6 @@ export default function BooksPage() {
 
       <div>
         <h1>Add Book</h1>
-        <input placeholder="Image URL" onChange={e => setImg(e.target.value)} />
         <input placeholder="Title" onChange={e => setTitle(e.target.value)} />
         <input placeholder="Author" onChange={e => setAuthor(e.target.value)} />
         <input
