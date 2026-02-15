@@ -27,8 +27,8 @@ export default function BooksPage() {
   }, [])
 
   return (
-    <div className=" flex flex-col bg-gray-200 h-screen p-5 m-5 rounded-xl m-2">
-      <div className="flex flex-row bg-gray-300 p-5 rounded-xl  ">
+    <div className=" flex flex-col bg-gray-50 h-screen p-5 m-5 rounded-xl m-2">
+      <div className="flex flex-row bg-gray-100 p-5 rounded-xl  ">
         <ul className="flex gap-5   ">
           {books.map(book => (
             <li key={book.id}>
